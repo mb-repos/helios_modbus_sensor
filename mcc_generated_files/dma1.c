@@ -101,8 +101,8 @@ void DMA1_DMASCNT_ISR(void)
 
 void DMA1_WriteUART1(uint8_t* buffer, uint8_t len)
 {
-    DMA1SSA = (unsigned short long)buffer;
-    DMA1DSA = (unsigned short)&U1TXB;
+    DMA1SSA = (uint24_t)buffer;
+    DMA1DSA = (uint16_t)&U1TXB;
     
     DMA1SSZ = len;
     DMA1DSZ = 1;

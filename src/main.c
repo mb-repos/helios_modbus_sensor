@@ -42,11 +42,35 @@
 
 #include "mcc.h"
 #include "modbus.h"
+#include "i2c_handler.h"
 #include "uart_handler.h"
 
 /*
                          Main application
  */
+
+
+void checkCmd()
+{
+    
+    uint8_t cmd = getCmdByte();
+    switch (cmd)
+    {
+        case CMD_RESET:
+            RESET();
+            break;
+        case CMD_REINIT:
+            while (DMA1CON0bits.EN == 1);
+            INTERRUPT_GlobalInterruptDisable();
+            modbus_init();
+            INTERRUPT_GlobalInterruptEnable();
+            break;
+        default:
+            break;
+            
+    }
+    
+}
 void main(void)
 {
     // initialize the device
@@ -80,6 +104,7 @@ void main(void)
             handleframe();
         }
         updateValues();
+        checkCmd();
         // Add your application code
     }
 }

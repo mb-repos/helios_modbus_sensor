@@ -53,8 +53,8 @@
 #include "tmr1.h"
 #include "tmr2.h"
 #include "uart1.h"
-#include "i2c1.h"
 #include "dma1.h"
+#include "i2c1.h"
 #include "dma2.h"
 
 #define _XTAL_FREQ  64000000

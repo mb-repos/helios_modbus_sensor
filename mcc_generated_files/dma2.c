@@ -122,8 +122,8 @@ uint16_t DMA2_getNumBytesRead()
 
 void DMA2_ReadUART1(uint8_t* buffer, uint8_t len)
 {
-    DMA2SSA = (unsigned short long)&U1RXB;
-    DMA2DSA = (unsigned short) buffer;
+    DMA2SSA = (uint24_t)&U1RXB;
+    DMA2DSA = (uint16_t) buffer;
     
     DMA2SSZ = 1;
     DMA2DSZ = len;

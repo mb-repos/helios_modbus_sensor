@@ -127,11 +127,8 @@ void uart_handle_modbus_rx(uint8_t c)
         case 1:
             addr = c;
             tempSensMask = getTempSensorMask();            
-            tempSensMask &= TEMP_MASK;
             vocSensMask = getVOCSensorMask();            
-            vocSensMask &= VOC_MASK;
             co2SensMask = getCO2SensorMask();
-            co2SensMask &= CO2_MASK;
             
             if ( (!(((addr & 0xf0u) == 0x30u) && (( 1u << ((addr & 0x0fu) -1u)) & tempSensMask) )) &&
                  (!(((addr & 0xf0u) == 0x50u) && (( 1u << ((addr & 0x0fu) -1u)) & vocSensMask) ))  &&

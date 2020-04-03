@@ -36,10 +36,11 @@ the measured values must be put in via I2C:
 |  00    | bitmask for available FTF sensors (0-8)
 |  01    | bitmask for available VOC sensors (0-4)
 |  02    | bitmask for availabel CO2 sensors (0-4)
-| 03 - 10| Humidity values (uint8)
-| 11 - 18| temperatur values (uint8) as (t-10) * 10
-| 19 - 26| VOC ppm (uint16) MSB first
-| 27 - 34| CO2 ppm (uint16) MSB first
+|  03    | command byte
+| 04 - 11| Humidity values (uint8)
+| 12 - 19| temperatur values (uint8) as (t-10) * 10
+| 20 - 27| VOC ppm (uint16) MSB first
+| 28 - 35| CO2 ppm (uint16) MSB first
 
 
 If you find this usefull and like to support me as I had the expenses for

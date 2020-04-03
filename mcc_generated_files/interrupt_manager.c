@@ -45,8 +45,8 @@
     TERMS.
 */
 
-#include "interrupt_manager.h"
 #include "mcc.h"
+#include "interrupt_manager.h"
 #include "i2c_handler.h"
 
 void  INTERRUPT_Initialize (void)
@@ -55,7 +55,7 @@ void  INTERRUPT_Initialize (void)
     INTCON0bits.IPEN = 0;
 }
 
-void interrupt INTERRUPT_InterruptManager (void)
+void __interrupt() INTERRUPT_InterruptManager (void)
 {
     // interrupt handler
     if(PIE5bits.DMA2AIE == 1 && PIR5bits.DMA2AIF == 1)

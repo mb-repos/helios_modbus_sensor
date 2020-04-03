@@ -23,10 +23,13 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#define CMD_RESET (0x01)   
+#define CMD_REINIT (0x02)
+
 #ifdef	__cplusplus
 extern "C" {
-#endif
-
+#endif 
+    
 void I2C1_ISR ( void );
 float getTemperature(uint8_t index);
 uint8_t getHumidity(uint8_t index);
@@ -35,6 +38,7 @@ uint16_t getCO2(uint8_t index);
 uint8_t getTempSensorMask();
 uint8_t getVOCSensorMask();
 uint8_t getCO2SensorMask();
+uint8_t getCmdByte();
 
 
 

@@ -83,7 +83,7 @@ void modbus_init()
             setReadCRC(j);
         }
         
-        uint8_t addr = 0;
+        addr = 0;
         for (; j< MAX_TEMP_SENSCOUNT + MAX_VOC_SENSCOUNT ; j++)
         {
             for (uint8_t k = 0; k< sizeof(defaultVOCReadFrame) ; k++)
@@ -97,7 +97,7 @@ void modbus_init()
             setReadCRC(j);
         }
         
-        uint8_t addr = 0;
+        addr = 0;
         for (; j< MAX_TEMP_SENSCOUNT + MAX_VOC_SENSCOUNT + MAX_CO2_SENSCOUNT; j++)
         {
             for (uint8_t k = 0; k< sizeof(defaultCO2ReadFrame) ; k++)

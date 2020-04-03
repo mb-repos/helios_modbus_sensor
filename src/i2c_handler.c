@@ -37,6 +37,7 @@ uint8_t EEPROM_Buffer[] =
     0x7f,                                    // active Temp/Humidty sensors
     0x0f,                                    // active VOC Sensors
     0x0f,                                    // active C=2 Sensors
+    0x00,                                    // cmd byte
     0x32,0x32,0x32,0x32,0x32,0x32,0x32,0x32, // Humidity 1 .. 8 (initial 50%)
     0x64,0x64,0x64,0x64,0x64,0x64,0x64,0x64, // Temperatur 1 ..8 (initial 20.0°C) 
     0x03,0x23, 0x03,0x24, 0x03,0x25, 0x03,0x26,                     // VOC 1..4
@@ -45,7 +46,7 @@ uint8_t EEPROM_Buffer[] =
 
 uint8_t eepromAddress    = 0;
 
-#define EEPROM_DATASTART (3u)
+#define EEPROM_DATASTART (4u)
 #define EEPROM_NUM_FTF   (8u)
 #define EEPROM_SIZE_FTF  (1u)
 #define EEPROM_NUM_VOC   (4u)
@@ -239,3 +240,16 @@ uint8_t getCO2SensorMask()
         INTERRUPT_GlobalInterruptEnable();        
         return ivalue & CO2_MASK;
 }
+
+uint8_t getCmdByte()
+{
+        INTERRUPT_GlobalInterruptDisable();
+        uint8_t ivalue = EEPROM_Buffer[3u];
+        if (ivalue)
+        {
+            EEPROM_Buffer[3u] = 0;
+        }
+        INTERRUPT_GlobalInterruptEnable();   
+        return ivalue;
+}
+

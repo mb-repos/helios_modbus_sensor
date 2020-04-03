@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=HeliosSensor.X
+PROJECTNAME=helios_modbus_sensor
 
 # Active Configuration
 DEFAULTCONF=Debug

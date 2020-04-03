@@ -10,9 +10,9 @@ CND_CONF=Debug
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/HeliosSensor.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=HeliosSensor.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=heliossensor.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/helios_modbus_sensor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=helios_modbus_sensor.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=heliosmodbussensor/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/heliossensor.x/bin
+makeDirectory ${TMPDIR}/heliosmodbussensor/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/heliossensor.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/heliosmodbussensor.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/heliossensor.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/heliosmodbussensor.tar *
 checkReturnCode
 
 # Cleanup
