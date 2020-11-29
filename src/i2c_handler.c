@@ -51,7 +51,7 @@ uint8_t eepromAddress    = 0;
 #define EEPROM_SIZE_FTF  (1u)
 #define EEPROM_NUM_VOC   (4u)
 #define EEPROM_SIZE_VOC  (2u)
-#define EERROM_NUM_CO2   (4u)
+#define EEPROM_NUM_CO2   (4u)
 #define EEPROM_SIZE_CO2  (2u)
 
 void I2C1_ISR ( void )
@@ -200,7 +200,7 @@ uint16_t getVOC(uint8_t index)
 }
 uint16_t getCO2(uint8_t index)
 {
-    if (index < 4)
+    if (index < EEPROM_NUM_CO2)
     {
         uint8_t pos = (index * EEPROM_SIZE_CO2)+ EEPROM_DATASTART + ((EEPROM_NUM_FTF * EEPROM_SIZE_FTF)*2u) + (EEPROM_NUM_VOC * EEPROM_SIZE_VOC);
         I2C1_waitIdle();
